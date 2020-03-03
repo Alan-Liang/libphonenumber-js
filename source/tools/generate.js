@@ -489,7 +489,7 @@ export default function(input, version, included_countries, extended, included_p
 			// between a country phone code and a country code
 			const all_types_required = country_codes.length > 1
 
-			if (!extended && !included_phone_number_types && !all_types_required)
+			if (country_codes[0] !== 'CN' && !extended && !included_phone_number_types && !all_types_required)
 			{
 				delete countries[country_codes[0]].types
 				continue
@@ -503,7 +503,7 @@ export default function(input, version, included_countries, extended, included_p
 				// is not required in this case.
 				if (!extended && !included_phone_number_types)
 				{
-					if (countries[country_code].leading_digits)
+					if (country_code !== 'CN' && countries[country_code].leading_digits)
 					{
 						delete countries[country_code].types
 						continue
